@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxios from '../hook/useAxios';
+import { Link } from 'react-router';
 
 const RecentBills = () => {
     let [bills,setBills]=useState([]);
@@ -27,9 +28,9 @@ const RecentBills = () => {
         <span className="font-medium text-gray-700">Date:</span> {data?.date}
       </p>
 
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+      <Link to={`/billsDetails/${data?._id}`} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
         See Details
-      </button>
+      </Link>
     </div>)
             }
         </div>

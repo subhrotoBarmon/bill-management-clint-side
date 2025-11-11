@@ -5,6 +5,9 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import HomeLayout from './layout/HomeLayout.jsx';
 import HomePage from './components/HomePage.jsx';
+import BillLayout from './layout/BillLayout.jsx';
+import AllBills from './components/AllBills.jsx';
+import BillDetails from './pages/BillDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -17,6 +20,21 @@ const router = createBrowserRouter([
       element:<HomePage></HomePage>
       }
   ]
+  },
+  {
+    path:'/bills',
+    element:<BillLayout></BillLayout>,
+    children:[
+      {
+        index:true,
+        element:<AllBills></AllBills>
+      }
+    ]
+  },
+  {
+    path:'/billsDetails/:id',
+    loader:({params})=>fetch(`http://localhost:3000/billsDetails/${params?.id}`),
+    element:<BillDetails></BillDetails>
   }
 ]);
 

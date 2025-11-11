@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 // import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
@@ -14,6 +14,9 @@ const Navbar = () => {
     //         console.log(error.message);
     //     })
     // }
+    let location=useLocation();
+    console.log(location);
+    
 
     let links=<>
     <NavLink to='/'>Home</NavLink>
