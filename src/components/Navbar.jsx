@@ -1,33 +1,44 @@
 import React, { use } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-// import { AuthContext } from '../Provider/AuthProvider';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import avater from '../assets/image-MTlD7Ds8.png'
 
 const Navbar = () => {
-    // let {user,logOut}=use(AuthContext);
+    let {user,logOut}=use(AuthContext);
 
-    // let handleLogout=()=>{
-    //     logOut()
-    //     .then(()=>{
-    //         alert("signout Successful");
-    //     })
-    //     .catch(error=>{
-    //         console.log(error.message);
-    //     })
-    // }
-    let location=useLocation();
-    console.log(location);
-    
+    let handleLogout=()=>{
+        logOut()
+        .then(()=>{
+            Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Log Out Successful!",
+  showConfirmButton: false,
+  timer: 1500
+});
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    }
 
-    let links=<>
+   let links = (
+  <div className="flex items-center gap-4">
     <NavLink to='/'>Home</NavLink>
     <NavLink to='/bills'>Bills</NavLink>
-    {/* {
-       user && <><NavLink to='/my-products'>My Products</NavLink>
-                 <NavLink to='/my-bids'>My Bids</NavLink>
-                 <NavLink to='/createAProduct'>Create A Product</NavLink>
-                 </>
-    } */}
-    </>
+    {user && (
+      <>
+        <NavLink to='/my-pay-bill'>My Pay Bill</NavLink>
+        <img
+          src={user?.photoURL ? user.photoURL : avater}
+          alt="user"
+          className="h-12 w-12 rounded-full object-cover"
+        />
+      </>
+    )}
+  </div>
+);
     return (
       <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -49,11 +60,10 @@ const Navbar = () => {
      {links}
     </ul>
   </div>
-        <Link className="btn">Log in</Link>
-    {/* {
-      user ? <Link to='/' onClick={handleLogout} className="btn">Sign Out</Link>:
+    {
+      user ? <Link to='/' onClick={handleLogout} className="btn">Log Out</Link>:
         <Link to='/login' className="btn">Log in</Link>
-    } */}
+    }
   </div>
 </div>
     );

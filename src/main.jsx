@@ -8,12 +8,18 @@ import HomePage from './components/HomePage.jsx';
 import BillLayout from './layout/BillLayout.jsx';
 import AllBills from './components/AllBills.jsx';
 import BillDetails from './pages/BillDetails.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
+import Loading from './pages/Loading.jsx';
+import PrivateProvider from './Provider/PrivateProvider.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<HomeLayout></HomeLayout>,
+    hydrateFallbackElement:<Loading></Loading>,
     children:[
       {
       index:true,
@@ -34,13 +40,25 @@ const router = createBrowserRouter([
   {
     path:'/billsDetails/:id',
     loader:({params})=>fetch(`http://localhost:3000/billsDetails/${params?.id}`),
-    element:<BillDetails></BillDetails>
+    element:<PrivateProvider>
+      <BillDetails></BillDetails>
+    </PrivateProvider>
+  },
+  {
+    path:'/login',
+    element:<Login></Login>
+  },
+  {
+    path:'/register',
+    element:<Register></Register>
   }
 ]);
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />
+     <AuthProvider>
+      <RouterProvider router={router} />
+     </AuthProvider>
   </StrictMode>,
 )
