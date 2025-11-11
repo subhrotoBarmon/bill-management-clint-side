@@ -17,7 +17,7 @@ const Navbar = () => {
 
     let links=<>
     <NavLink to='/'>Home</NavLink>
-    <NavLink to='/all-products'>All Products</NavLink>
+    <NavLink to='/bills'>Bills</NavLink>
     {/* {
        user && <><NavLink to='/my-products'>My Products</NavLink>
                  <NavLink to='/my-bids'>My Bids</NavLink>
@@ -38,7 +38,7 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <a className="btn btn-ghost font-bold text-xl">Smart Deals</a>
+    <a className="btn btn-ghost font-bold text-xl text-blue-500">PAY BILL</a>
   </div>
   <div className="navbar-end">     
   <div className="navbar-end hidden lg:flex">
