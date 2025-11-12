@@ -48,8 +48,8 @@ let handleBillForm = (e) => {
 
   const newPayBill = {
     billId,
-    buyer_name: username,
-    buyer_email: email,
+    username: username,
+    email: email,
     amount,
     address,
     phone,
@@ -72,17 +72,21 @@ let handleBillForm = (e) => {
           timer: 1500
         });
 
-        // Add new entry to local state (optional)
         const updatedBills = [...payBill, { ...newPayBill, _id: res.data.insertedId }];
         updatedBills.sort((a, b) => b.amount - a.amount);
         setPayBill(updatedBills);
       }
     })
-    .catch((err) => {
-      console.error("Error submitting bill:", err);
-      alert("Something went wrong while submitting your bill.");
+    .catch((error) => {
+      console.log(error.message)
     });
 };
+
+//month check 
+  const billDate = new Date(bill?.date);
+  const currentDate = new Date();
+
+  const isSameMonth =billDate.getMonth() === currentDate.getMonth()
 
     
     return (
@@ -97,9 +101,18 @@ let handleBillForm = (e) => {
         <p><strong>Location:</strong> {bill?.location}</p>
         <p><strong>Date:</strong> {bill?.date}</p>
         <p><strong>Amount:</strong> ${bill?.amount}</p>
-  <button onClick={handleBill} className="btn btn-primary">
-    Pay Your Bill
-  </button>
+  {/* Pay Bill Button  */}
+    <div className="flex flex-col gap-2">
+      <button
+        onClick={handleBill}
+        className="btn btn-primary"
+        disabled={!isSameMonth}
+      >
+        Pay Your Bill
+      </button>
+    </div>
+
+
 
   <dialog ref={billRef} className="modal modal-bottom sm:modal-middle">
     <div className="modal-box">
@@ -107,7 +120,7 @@ let handleBillForm = (e) => {
 
       <form onSubmit={handleBillForm}>
         <fieldset className="fieldset space-y-2">
-          {/* Email (auto-filled, read-only) */}
+          {/* Email */}
           <label className="label">Email</label>
           <input
             type="email"
@@ -117,7 +130,7 @@ let handleBillForm = (e) => {
             readOnly
           />
 
-          {/* Bill ID (auto-filled, read-only) */}
+          {/* Bill ID  */}
           <label className="label">Bill ID</label>
           <input
             type="text"
@@ -127,7 +140,7 @@ let handleBillForm = (e) => {
             readOnly
           />
 
-          {/* Amount (auto-filled, read-only) */}
+          {/* Amount  */}
           <label className="label">Amount</label>
           <input
             type="text"
@@ -167,7 +180,7 @@ let handleBillForm = (e) => {
             required
           />
 
-          {/* Date (auto-filled, read-only) */}
+          {/* Date  */}
           <label className="label">Date</label>
           <input
             type="text"

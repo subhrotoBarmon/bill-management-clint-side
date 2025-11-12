@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Link, NavLink, useLocation } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import avater from '../assets/image-MTlD7Ds8.png'
@@ -29,7 +29,7 @@ const Navbar = () => {
     <NavLink to='/bills'>Bills</NavLink>
     {user && (
       <>
-        <NavLink to='/my-pay-bill'>My Pay Bill</NavLink>
+        <NavLink to='/myPayBills'>My Pay Bill</NavLink>
         <img
           src={user?.photoURL ? user.photoURL : avater}
           alt="user"

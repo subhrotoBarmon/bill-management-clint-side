@@ -13,6 +13,8 @@ import Register from './pages/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import Loading from './pages/Loading.jsx';
 import PrivateProvider from './Provider/PrivateProvider.jsx';
+import MyPayBillsLayout from './layout/MyPayBillsLayout.jsx';
+import MyPayBillList from './components/MyPayBillList.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
         element:<AllBills></AllBills>
       }
     ]
+  },
+  {
+    path:'/myPayBills',
+    element:<MyPayBillsLayout></MyPayBillsLayout>,
+    children:[{
+      index:true,
+      element:<MyPayBillList></MyPayBillList>
+    }]
   },
   {
     path:'/billsDetails/:id',
