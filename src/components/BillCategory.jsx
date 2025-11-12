@@ -12,7 +12,9 @@ let BillCategory = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 py-8">
+    <>
+    <h2 className='text-center font-bold text-2xl mt-4 text-blue-500'>Category</h2>
+    <div className="flex flex-wrap justify-center gap-6 py-4">
       {/* Electricity */}
       <div
         onClick={() => handleCategoryClick('Electricity')}
@@ -49,6 +51,7 @@ let BillCategory = () => {
         <h3 className="text-lg font-semibold text-gray-700">Internet</h3>
       </div>
     </div>
+    </>
   );
 };
 

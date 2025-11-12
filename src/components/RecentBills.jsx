@@ -14,7 +14,10 @@ const RecentBills = () => {
     },[axiosInstance])
 
     return (
+        <>
+        <h2 className='text-center font-bold text-2xl mb-2 text-blue-500'>Recent Bills</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+
             {
                 bills.map(data=><div key={data._id} className="w-90 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-5 border border-gray-100 mt-2">
       <h2 className="text-lg font-semibold text-gray-800 mb-2">{data?.title}</h2>
@@ -34,6 +37,7 @@ const RecentBills = () => {
     </div>)
             }
         </div>
+        </>
     );
 };
 

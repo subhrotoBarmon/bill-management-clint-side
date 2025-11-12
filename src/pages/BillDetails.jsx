@@ -215,10 +215,10 @@ let handleBillForm = (e) => {
   <img 
     src={bill?.image} 
     alt={bill?.title} 
-    className="w-full h-1/2 rounded-lg object-cover" 
+    className="w-full h-2/3 rounded-lg object-cover" 
   />
   <p className="text-gray-700">
-    <span className='font-semibold'>Description:</span> {bill?.description}
+    <span className='font-bold'>Description:</span> {bill?.description}
   </p>
 </div>
 

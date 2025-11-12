@@ -42,13 +42,13 @@ const MyPayBillList = () => {
         })
     }
      
-      // ✏️ Open Update Modal
+      //  Update Modal
    const handleUpdate = (bill) => {
     setSelectedBill(bill);
     updateRef.current.showModal();
   };
 
-  // 💾 Submit Updated Data
+  //  Updated Data
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -84,7 +84,7 @@ const MyPayBillList = () => {
 
 
     return (
-       <div className="overflow-x-auto p-4">
+       <div className="overflow-x-auto w-11/12 mx-auto p-4">
       <table className="table-auto w-full border border-gray-300 rounded-lg shadow-sm">
         <thead className="bg-gray-100">
           <tr className="text-left">
@@ -129,7 +129,7 @@ const MyPayBillList = () => {
             myPayBills.length===0 &&  <p className="text-center text-gray-500 mt-4">No data found.</p>
           }
 
-           {/* 🔵 Update Modal */}
+           {/* Update Modal */}
             <dialog ref={updateRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg mb-2">Update Your Bill Details</h3>

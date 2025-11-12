@@ -15,6 +15,7 @@ import Loading from './pages/Loading.jsx';
 import PrivateProvider from './Provider/PrivateProvider.jsx';
 import MyPayBillsLayout from './layout/MyPayBillsLayout.jsx';
 import MyPayBillList from './components/MyPayBillList.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path:'/register',
     element:<Register></Register>
+  },
+  {  
+    path: '*',
+    element:<ErrorPage></ErrorPage>,    
   }
 ]);
 

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../pages/Loading';
+import Footer from '../components/Footer';
 
 const HomeLayout = () => {
     let {loading}=use(AuthContext);
@@ -14,11 +15,11 @@ const HomeLayout = () => {
         <header>
             <Navbar></Navbar>
         </header>
-        <main>
+        <main className='bg-gray-100 pb-5'>
             <Outlet></Outlet>
         </main>
             <footer>
-
+         <Footer></Footer>
             </footer>
         </>
     );

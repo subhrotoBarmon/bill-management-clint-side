@@ -14,9 +14,9 @@ const BillLayout = () => {
         <>
           <header>
             <Navbar></Navbar>
-            <BillCategory></BillCategory>
           </header>  
-          <main className='w-11/12 mx-auto'>
+          <main className=' bg-gray-100'>
+            <BillCategory></BillCategory>
             <Outlet></Outlet>
           </main>
           <footer>
