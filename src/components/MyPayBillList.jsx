@@ -3,6 +3,10 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../pages/Loading';
 import useAxios from '../hook/useAxios';
 import Swal from 'sweetalert2';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
+
 
 const MyPayBillList = () => {
     let {user,loading}=use(AuthContext);
@@ -82,9 +86,64 @@ const MyPayBillList = () => {
       });
   };
 
+//   Download
+const handleDownloadReport = () => {
+  const doc = new jsPDF();
+
+  // Title
+  doc.setFontSize(16);
+  doc.text("My Pay Bill Report", 14, 15);
+  doc.setFontSize(12);
+  doc.text(`User: ${user?.email || "N/A"}`, 14, 25);
+
+  //  table data
+  const tableColumn = ["Username", "Email", "Amount", "Address", "Phone", "Date"];
+  const tableRows = [];
+
+  myPayBills.forEach((bill) => {
+    const rowData = [
+      bill.username,
+      bill.email,
+      bill.amount,
+      bill.address,
+      bill.phone,
+      bill.date,
+    ];
+    tableRows.push(rowData);
+  });
+
+ autoTable(doc, {
+    head: [tableColumn],
+    body: tableRows,
+    startY: 30,
+  });
+  
+  const finalY = doc.lastAutoTable.finalY + 10;
+  doc.setFontSize(12);
+  doc.text(`Total Bills: ${myPayBills.length}`, 14, finalY);
+  doc.text(`Total Amount: ${totalAmount}`, 14, finalY + 7);
+
+  doc.save("MyPayBill_Report.pdf");
+ };
+
+   
+//   Total Pay Bill
+   let totalAmount = 0;
+   for (let bill of myPayBills) {
+   totalAmount =totalAmount + parseFloat(bill.amount || 0);
+   }
+
 
     return (
        <div className="overflow-x-auto w-11/12 mx-auto p-4">
+        <h3 className='text-end font-bold'> Bill Paid : <span className='text-blue-500'>{myPayBills.length}</span></h3>
+        <h3 className='text-end font-bold'> Total Amount:<span className='text-blue-500'>{totalAmount}</span></h3>
+        <button
+             onClick={handleDownloadReport}
+                  className="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded"
+                >
+                  Download Report
+                </button>
       <table className="table-auto w-full border border-gray-300 rounded-lg shadow-sm">
         <thead className="bg-gray-100">
           <tr className="text-left">

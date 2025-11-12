@@ -67,7 +67,7 @@ let handleBillForm = (e) => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Log Out Successful!",
+          title: "Your Bill Payment Successfully!",
           showConfirmButton: false,
           timer: 1500
         });

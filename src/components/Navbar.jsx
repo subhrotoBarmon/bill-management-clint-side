@@ -31,7 +31,7 @@ const Navbar = () => {
       <>
         <NavLink to='/myPayBills'>My Pay Bill</NavLink>
         <img
-          src={user?.photoURL ? user.photoURL : avater}
+          src={user?.photoURL ? user?.photoURL : avater}
           alt="user"
           className="h-12 w-12 rounded-full object-cover"
         />
