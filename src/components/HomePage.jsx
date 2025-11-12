@@ -2,6 +2,8 @@ import React from 'react';
 import Banner from './Banner';
 import BillCategory from './BillCategory';
 import RecentBills from './RecentBills';
+import PaymentMethod from './PaymentMethod';
+import PaybillReviews from './PaybillReviews';
 
 const HomePage = () => {
     return (
@@ -14,6 +16,12 @@ const HomePage = () => {
             </section>
             <section>
                 <RecentBills></RecentBills>
+            </section>
+            <section>
+                <PaymentMethod></PaymentMethod>
+            </section>
+            <section>
+                <PaybillReviews></PaybillReviews>
             </section>
 
         </div>
