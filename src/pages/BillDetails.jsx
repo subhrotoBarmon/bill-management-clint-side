@@ -35,7 +35,7 @@ const BillDetails = () => {
 let handleBillForm = (e) => {
   e.preventDefault();
 
-  // Collect form data
+  //  form data
   let form = e.target;
   let email = form.email.value;
   let billId = form.billId.value;

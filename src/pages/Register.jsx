@@ -32,7 +32,7 @@ const Register = () => {
     .then(result=>{
       profileUpdata({displayName:name,photoURL:photo})
       .then(()=>{
-        navigate(`${location.state ? location.state : '/'}`)  
+        navigate(`${location?.state ? location?.state : '/'}`)  
         setUser({...result?.user,displayName:name,photoURL:photo}); 
       })
       .catch(error=>{
@@ -48,7 +48,7 @@ const Register = () => {
  let handleLoginWithGoogle=()=>{
         signInWithGoogle()
          .then(result=>{
-            navigate(`${location.state ? location.state : '/'}`)
+            navigate(`${location?.state ? location?.state : '/'}`)
             console.log(result.user);
         })
         .catch(error=>{

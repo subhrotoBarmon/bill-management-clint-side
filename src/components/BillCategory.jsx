@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router';
 let BillCategory = () => {
   let navigate = useNavigate();
 
-  // Function to navigate with selected category
-  let handleCategoryClick = (category) => {
+  let handleCategory = (category) => {
     navigate(`/bills?category=${category}`);
   };
 
@@ -17,7 +16,7 @@ let BillCategory = () => {
     <div className="flex flex-wrap justify-center gap-6 py-4">
       {/* Electricity */}
       <div
-        onClick={() => handleCategoryClick('Electricity')}
+        onClick={() => handleCategory('Electricity')}
         className="cursor-pointer w-56 p-6 rounded-2xl shadow-md bg-gradient-to-b from-yellow-100 to-yellow-50 hover:shadow-lg hover:scale-105 transition-transform text-center"
       >
         <FaBolt className="text-yellow-500 text-4xl mb-3 mx-auto" />
@@ -26,7 +25,7 @@ let BillCategory = () => {
 
       {/* Gas */}
       <div
-        onClick={() => handleCategoryClick('Gas')}
+        onClick={() => handleCategory('Gas')}
         className="cursor-pointer w-56 p-6 rounded-2xl shadow-md bg-gradient-to-b from-red-100 to-red-50 hover:shadow-lg hover:scale-105 transition-transform text-center"
       >
         <FaGasPump className="text-red-500 text-4xl mb-3 mx-auto" />
@@ -35,7 +34,7 @@ let BillCategory = () => {
 
       {/* Water */}
       <div
-        onClick={() => handleCategoryClick('Water')}
+        onClick={() => handleCategory('Water')}
         className="cursor-pointer w-56 p-6 rounded-2xl shadow-md bg-gradient-to-b from-blue-100 to-blue-50 hover:shadow-lg hover:scale-105 transition-transform text-center"
       >
         <FaWater className="text-blue-500 text-4xl mb-3 mx-auto" />
@@ -44,7 +43,7 @@ let BillCategory = () => {
 
       {/* Internet */}
       <div
-        onClick={() => handleCategoryClick('Internet')}
+        onClick={() => handleCategory('Internet')}
         className="cursor-pointer w-56 p-6 rounded-2xl shadow-md bg-gradient-to-b from-green-100 to-green-50 hover:shadow-lg hover:scale-105 transition-transform text-center"
       >
         <FaWifi className="text-green-500 text-4xl mb-3 mx-auto" />

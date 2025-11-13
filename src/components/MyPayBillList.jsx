@@ -46,13 +46,13 @@ const MyPayBillList = () => {
         })
     }
      
-      //  Update Modal
+      //  Modal
    let handleUpdate = (bill) => {
     setSelectedBill(bill);
     updateRef.current.showModal();
   };
 
-  //  Updated Data
+  //  Update Data
   let handleUpdateSubmit = (e) => {
     e.preventDefault();
     let form = e.target;
@@ -74,7 +74,6 @@ const MyPayBillList = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          // Update UI
           let updatedList = myPayBills.map((bill) =>
             bill._id === selectedBill._id
               ? { ...bill, ...updatedBill }
