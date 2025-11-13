@@ -21,5 +21,4 @@
 2.React Router
 3.Tailwind CSS
 4.Firebase  
-5.Mongodb
-6.Axios & Express.js (for Backend)  
+6.Mongodb,Axios & Express.js (for Backend)  

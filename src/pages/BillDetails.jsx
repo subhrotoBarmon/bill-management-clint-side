@@ -10,7 +10,7 @@ const BillDetails = () => {
     let {id}=useParams();
     
     let [payBill,setPayBill]=useState([]);
-    const [bill, setBill] = useState(null);
+    let [bill, setBill] = useState(null);
     let {user,loading}=use(AuthContext);
     let billRef=useRef(null);
     
@@ -36,17 +36,17 @@ let handleBillForm = (e) => {
   e.preventDefault();
 
   // Collect form data
-  const form = e.target;
-  const email = form.email.value;
-  const billId = form.billId.value;
-  const amount = form.amount.value;
-  const username = form.username.value;
-  const address = form.address.value;
-  const phone = form.phone.value;
-  const date = form.date.value;
-  const info = form.info.value;
+  let form = e.target;
+  let email = form.email.value;
+  let billId = form.billId.value;
+  let amount = form.amount.value;
+  let username = form.username.value;
+  let address = form.address.value;
+  let phone = form.phone.value;
+  let date = form.date.value;
+  let info = form.info.value;
 
-  const newPayBill = {
+  let newPayBill = {
     billId,
     username: username,
     email: email,
@@ -72,7 +72,7 @@ let handleBillForm = (e) => {
           timer: 1500
         });
 
-        const updatedBills = [...payBill, { ...newPayBill, _id: res.data.insertedId }];
+        let updatedBills = [...payBill, { ...newPayBill, _id: res.data.insertedId }];
         updatedBills.sort((a, b) => b.amount - a.amount);
         setPayBill(updatedBills);
       }
@@ -83,17 +83,17 @@ let handleBillForm = (e) => {
 };
 
 //month check 
-  const billDate = new Date(bill?.date);
-  const currentDate = new Date();
+  let billDate = new Date(bill?.date);
+  let currentDate = new Date();
 
-  const isSameMonth =billDate.getMonth() === currentDate.getMonth()
+  let isSameMonth =billDate.getMonth() === currentDate.getMonth()
 
     
     return (
         <div>
             <Navbar></Navbar>
             {/*Bill Details */}
-            <div className="flex flex-col md:flex-row gap-6 p-6 border rounded shadow-lg w-11/12 mx-auto">
+            <div className="flex flex-col-reverse md:flex-row gap-6 p-6 border rounded shadow-lg w-11/12 mx-auto">
                 <div className='md:w-1/2 flex flex-col gap-4 shadow-2xl p-4'>
                     <h2 className="text-2xl font-bold">{bill?.title}</h2>
         <p><strong>Category:</strong> {bill?.category}</p>

@@ -11,8 +11,8 @@ import autoTable from "jspdf-autotable";
 const MyPayBillList = () => {
     let {user,loading}=use(AuthContext);
     let [myPayBills,setMyPayBills]=useState([]);
-    const [selectedBill, setSelectedBill] = useState(null);
-    const updateRef = useRef(null);
+    let [selectedBill, setSelectedBill] = useState(null);
+    let updateRef = useRef(null);
 
     let axiosInstance=useAxios();
 
@@ -47,16 +47,16 @@ const MyPayBillList = () => {
     }
      
       //  Update Modal
-   const handleUpdate = (bill) => {
+   let handleUpdate = (bill) => {
     setSelectedBill(bill);
     updateRef.current.showModal();
   };
 
   //  Updated Data
-  const handleUpdateSubmit = (e) => {
+  let handleUpdateSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const updatedBill = {
+    let form = e.target;
+    let updatedBill = {
       amount: form.amount.value,
       address: form.address.value,
       phone: form.phone.value,
@@ -75,7 +75,7 @@ const MyPayBillList = () => {
             timer: 1500,
           });
           // Update UI
-          const updatedList = myPayBills.map((bill) =>
+          let updatedList = myPayBills.map((bill) =>
             bill._id === selectedBill._id
               ? { ...bill, ...updatedBill }
               : bill
@@ -87,8 +87,8 @@ const MyPayBillList = () => {
   };
 
 //   Download
-const handleDownloadReport = () => {
-  const doc = new jsPDF();
+let handleDownloadReport = () => {
+  let doc = new jsPDF();
 
   // Title
   doc.setFontSize(16);
@@ -97,11 +97,11 @@ const handleDownloadReport = () => {
   doc.text(`User: ${user?.email || "N/A"}`, 14, 25);
 
   //  table data
-  const tableColumn = ["Username", "Email", "Amount", "Address", "Phone", "Date"];
-  const tableRows = [];
+  let tableColumn = ["Username", "Email", "Amount", "Address", "Phone", "Date"];
+  let tableRows = [];
 
   myPayBills.forEach((bill) => {
-    const rowData = [
+    let rowData = [
       bill.username,
       bill.email,
       bill.amount,
@@ -118,7 +118,7 @@ const handleDownloadReport = () => {
     startY: 30,
   });
 
-  const finalY = doc.lastAutoTable.finalY + 10;
+  let finalY = doc.lastAutoTable.finalY + 10;
   doc.setFontSize(12);
   doc.text(`Total Bills: ${myPayBills.length}`, 14, finalY);
   doc.text(`Total Amount: ${totalAmount}`, 14, finalY + 7);
