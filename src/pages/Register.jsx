@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import Loading from './Loading';
+import Navbar from '../components/Navbar';
 
 const Register = () => {
     let {showPassword,setShowPassword,setUser,createRegistration,error,setError,profileUpdata,loading,signInWithGoogle}=use(AuthContext);
@@ -10,9 +11,6 @@ const Register = () => {
     let location=useLocation();
     // console.log(user);  
     
-    if(loading){
-      return <Loading></Loading>
-    }
 
     let handleSignup=(e)=>{
     e.preventDefault();
@@ -62,23 +60,29 @@ let handleShowingPassword=()=>{
     return setShowPassword(!showPassword);
 }
 
+if(loading){
+      return <Loading></Loading>
+    }
+
     return (
+      <>
+      <Navbar></Navbar>
         <div className='flex justify-center items-center h-screen'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
-        <h2 className='text-center text-2xl font-bold'>Registration Now!</h2>
+        <h2 className='text-center text-2xl text-black font-bold'>Registration Now!</h2>
           <form onSubmit={handleSignup}>
         <fieldset className="fieldset">
             <label className="label">Your Name</label>
-          <input type="text" name='name' className="input" placeholder="Your Name" />
+          <input type="text" name='name' className="input text-black" placeholder="Your Name" />
             <label className="label">Your Photo URL</label>
-          <input type="text" name='photo' className="input" placeholder="Photo URL" />
+          <input type="text" name='photo' className="input text-black" placeholder="Photo URL" />
             <label className="label">Email</label>
-          <input type="email" name='email' className="input" placeholder="Email" />
+          <input type="email" name='email' className="input text-black" placeholder="Email" />
           <label className="label">Password</label>
           <div className='relative'>
             <input type = {showPassword?"text":"password"} 
-            name='password' className="input" placeholder="Password" />
+            name='password' className="input text-black" placeholder="Password" />
             <button onClick={handleShowingPassword} className='absolute top-4 right-7'>{showPassword ?<FaRegEyeSlash />:<FaRegEye />}</button>
           </div>
           <button className="btn btn-neutral mt-4">Register</button>
@@ -91,10 +95,11 @@ let handleShowingPassword=()=>{
         {
           error && <p className='text-red-700'>{error}</p>
         }
-        <p className='mt-2'>Already have your account?please <Link to='/login' className='text-blue-600 underline'>Login.</Link></p>
+        <p className='mt-2 text-black'>Already have your account?please <Link to='/login' className='text-blue-600 underline'>Login.</Link></p>
       </div>
     </div>
         </div>
+        </>
     );
 };
 

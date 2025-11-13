@@ -117,7 +117,7 @@ const handleDownloadReport = () => {
     body: tableRows,
     startY: 30,
   });
-  
+
   const finalY = doc.lastAutoTable.finalY + 10;
   doc.setFontSize(12);
   doc.text(`Total Bills: ${myPayBills.length}`, 14, finalY);
@@ -147,19 +147,19 @@ const handleDownloadReport = () => {
       <table className="table-auto w-full border border-gray-300 rounded-lg shadow-sm">
         <thead className="bg-gray-100">
           <tr className="text-left">
-            <th className="px-4 py-2 border">Username</th>
-            <th className="px-4 py-2 border">Email</th>
-            <th className="px-4 py-2 border">Amount</th>
-            <th className="px-4 py-2 border">Address</th>
-            <th className="px-4 py-2 border">Phone</th>
-            <th className="px-4 py-2 border">Date</th>
-            <th className="px-4 py-2 border text-center">Actions</th>
+            <th className="px-4 py-2 border text-black">Username</th>
+            <th className="px-4 py-2 border text-black">Email</th>
+            <th className="px-4 py-2 border text-black">Amount</th>
+            <th className="px-4 py-2 border text-black">Address</th>
+            <th className="px-4 py-2 border text-black">Phone</th>
+            <th className="px-4 py-2 border text-black">Date</th>
+            <th className="px-4 py-2 border text-black text-center">Actions</th>
           </tr>
         </thead>
 
         <tbody>
           {myPayBills?.map((item) => (
-            <tr key={item._id } className="hover:bg-gray-50">
+            <tr key={item._id } className="">
               <td className="px-4 py-2 border">{item.username}</td>
               <td className="px-4 py-2 border">{item.email}</td>
               <td className="px-4 py-2 border">{item.amount}</td>

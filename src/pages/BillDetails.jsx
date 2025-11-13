@@ -125,7 +125,7 @@ let handleBillForm = (e) => {
           <input
             type="email"
             name="email"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             defaultValue={user?.email}
             readOnly
           />
@@ -135,7 +135,7 @@ let handleBillForm = (e) => {
           <input
             type="text"
             name="billId"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             defaultValue={bill?._id}
             readOnly
           />
@@ -145,7 +145,7 @@ let handleBillForm = (e) => {
           <input
             type="text"
             name="amount"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             defaultValue={bill?.amount}
             readOnly
           />
@@ -155,7 +155,7 @@ let handleBillForm = (e) => {
           <input
             type="text"
             name="username"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             placeholder="Your full name"
             required
           />
@@ -165,7 +165,7 @@ let handleBillForm = (e) => {
           <input
             type="text"
             name="address"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             placeholder="Your address"
             required
           />
@@ -175,7 +175,7 @@ let handleBillForm = (e) => {
           <input
             type="tel"
             name="phone"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             placeholder="Your phone number"
             required
           />
@@ -185,7 +185,7 @@ let handleBillForm = (e) => {
           <input
             type="text"
             name="date"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-black"
             defaultValue={new Date().toLocaleDateString()}
             readOnly
           />
@@ -194,7 +194,7 @@ let handleBillForm = (e) => {
           <label className="label">Additional Info</label>
           <textarea
             name="info"
-            className="textarea textarea-bordered w-full"
+            className="textarea textarea-bordered w-full text-black"
             placeholder="Any additional notes (optional)"
           ></textarea>
 

@@ -15,7 +15,7 @@ const HomeLayout = () => {
         <header>
             <Navbar></Navbar>
         </header>
-        <main className='bg-gray-100 pb-5'>
+        <main className='pb-5'>
             <Outlet></Outlet>
         </main>
             <footer>

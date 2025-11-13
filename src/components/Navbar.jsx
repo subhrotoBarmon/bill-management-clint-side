@@ -3,9 +3,13 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import avater from '../assets/image-MTlD7Ds8.png'
+import { useTheme } from 'next-themes';
+import { MdDarkMode } from "react-icons/md";
+import { FaLightbulb } from "react-icons/fa";
 
 const Navbar = () => {
     let {user,logOut}=use(AuthContext);
+    let {theme,setTheme}=useTheme();
 
     let handleLogout=()=>{
         logOut()
@@ -24,12 +28,13 @@ const Navbar = () => {
     }
 
    let links = (
-  <div className="flex items-center gap-4">
-    <NavLink to='/'>Home</NavLink>
-    <NavLink to='/bills'>Bills</NavLink>
+  <div className="flex items-center gap-2">
+    <button className='text-black p-1' onClick={()=>setTheme(theme==="light" ? "dark" : "light")}>{theme==="light" ? <MdDarkMode /> : <FaLightbulb/> }</button>
+    <NavLink className="text-black" to='/'>Home</NavLink>
+    <NavLink className="text-black" to='/bills'>Bills</NavLink>
     {user && (
       <>
-        <NavLink to='/myPayBills'>My Pay Bill</NavLink>
+        <NavLink className="text-black" to='/myPayBills'>My Pay Bill</NavLink>
         <img
           src={user?.photoURL ? user?.photoURL : avater}
           alt="user"

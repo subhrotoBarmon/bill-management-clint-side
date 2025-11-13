@@ -16,6 +16,8 @@ import PrivateProvider from './Provider/PrivateProvider.jsx';
 import MyPayBillsLayout from './layout/MyPayBillsLayout.jsx';
 import MyPayBillList from './components/MyPayBillList.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import { ThemeProvider } from 'next-themes'
+
 
 
 const router = createBrowserRouter([
@@ -73,7 +75,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
      <AuthProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider attribute="class" defaultTheme='light'>
+        <RouterProvider router={router} />
+      </ThemeProvider>
      </AuthProvider>
   </StrictMode>,
 )

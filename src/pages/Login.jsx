@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../pages/Loading'
 import { Link, useLocation, useNavigate } from 'react-router';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
     let {login,loading,signInWithGoogle}=use(AuthContext);
@@ -39,16 +40,18 @@ const Login = () => {
     }
 
     return (
+        <>
+        <Navbar></Navbar>
        <div className="card bg-base-100 w-full mx-auto mt-10 max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
-        <h2 className='text-2xl font-semibold'>Login Now!</h2>
+        <h2 className='text-2xl text-black font-semibold'>Login Now!</h2>
         <form onSubmit={handleLogin}>
            <fieldset className="fieldset">
           <label className="label">Email</label>
-          <input type="email" name='email' className="input" placeholder="Email" />
+          <input type="email" name='email' className="input text-black" placeholder="Email" />
           <label className="label">Password</label>
-          <input type="password" name='password' className="input" placeholder="Password" />
-          <div><a className="link link-hover">Forgot password?</a></div>
+          <input type="password" name='password' className="input text-black" placeholder="Password" />
+          <div><a className="link link-hover text-black">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">Login</button>
         </fieldset> 
         </form>
@@ -57,9 +60,10 @@ const Login = () => {
   Login with Google
 </button>
 
-<p>If you are new?please<Link to='/register' className='text-blue-600 underline'>Registration</Link></p>
+<p className='text-black'>If you are new?please<Link to='/register' className='text-blue-600 underline'>Registration</Link></p>
       </div>
     </div>
+    </>
     );
 };
 

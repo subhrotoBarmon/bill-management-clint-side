@@ -16,7 +16,7 @@ const paymentLogos = {
 
 const PaymentMethods = () => {
   return (
-    <section className="bg-gray-100 py-10 flex flex-col items-center">
+    <section className=" py-10 flex flex-col items-center">
       <h2 className="text-2xl font-bold text-gray-700 mb-6">
         Choose Payment Method
       </h2>
